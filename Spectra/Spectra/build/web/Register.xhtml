@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!-- addentry.html -->
+<!-- Form for adding an entry to an address book -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Kayıt Ol</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    </h:head>
+    <h:body>
+        <h3>Kayıt ol</h3>
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:outputText value="Username giriniz."/>
+                <small> (Lütfen sample database içindeki Purchase_Order tablosundan
+                    uygun bir Customer_id değeri girin - Örneğin: 1 veya 2 veya 36 gibi)</small>
+                <h:inputText required="true"
+                             value="#{Spectra.username}" />
+                <h:outputText value="Password giriniz."/>
+                <h:inputText required="true"
+                             value="#{Spectra.password}" />
+                <h:commandButton value="Kaydet"
+                                 action="#{Spectra.register()}"/>
+                <h:commandButton value="Çıkış yap" action="#{Spectra.redirectToLoginPage()}"/>
+            </h:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>

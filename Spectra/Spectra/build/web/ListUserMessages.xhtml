@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!-- index.html -->
+<!-- Displays an h:dataTable of the addresses in the address book -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>ListUserMessages</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    </h:head>
+    <h:body>
+        <h3>Kullanıcı Mesajları</h3> 
+        <small> Kullanıcı Mesajlarını bu sayfadan görüntüleyebilirsiniz.</small>
+
+        <h:dataTable value="#{Spectra.fetchUserMessages()}" var="dataSource"
+                     border="1" cellpadding="10" cellspacing="3" >
+            <h:column>
+                <f:facet name="header"> Blog Metni</f:facet>
+                    #{dataSource.Message}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Oluşturan Kişi</f:facet>
+                #{dataSource.Name} #{dataSource.Surname}
+            </h:column>
+            <h:column>
+                <f:facet name="header">E-Mail Adresi</f:facet>
+                    #{dataSource.Email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Oluşturulma Tarihi</f:facet>
+                    #{dataSource.CreateDate}
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandLink value="Sil" action="#{Spectra.deleteUserMessage(dataSource.Id)}"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+        <h:form>
+            <h:commandButton value="Geri Dön" action="ListBlogs.xhtml"/>
+            <h:commandButton value="Çıkış yap" action="#{Spectra.redirectToLoginPage()}"/>
+        </h:form>
+    </h:body>
+</html>
